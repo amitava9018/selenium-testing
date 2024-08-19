@@ -5,7 +5,7 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.assignment.insureapptesting</groupId>
-  <artifactId>insureapptesting</artifactId>
+  <artifactId>medicure</artifactId>
   <version>0.0.1-SNAPSHOT</version>
 
   <name>insureapptest</name>
