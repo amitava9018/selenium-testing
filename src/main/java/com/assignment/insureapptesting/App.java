@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
@@ -25,32 +26,34 @@ public class App
     	  
           System.out.println("Script is Executing");
     	  
-          driver.get("http://localhost:8081/contact.html");
-    	  System.out.println("Insure me app is opened");
-    	  
-    	  //System.out.println("Contact us is clicked");
-    	  
-    	  driver.findElement(By.id("inputName")).sendKeys("amitava");
-    	  System.out.println("name is enetered");
-    	  
-    	  driver.findElement(By.id("inputNumber")).sendKeys("1232132131");
-    	  System.out.println("number is enetered");
-    	  
-    	  driver.findElement(By.id("inputMail")).sendKeys("amitava@test.com");
-    	  System.out.println("email is enetered");
-    	  
-    	  driver.findElement(By.id("inputMessage")).sendKeys("testing selenium insure me app");
-    	  System.out.println("message entered");
-    	  
-    	  driver.findElement(By.id("my-button")).click();
-    	  System.out.println("Send button clicked");
-    	  
-    	  assertEquals("Message Sent", driver.findElement(By.id("response")).getText());
-    	  
-    	  
-	    
-    	  Thread.sleep(1000);
-    	  
-    	  System.out.println("Got the response successfully"); Thread.sleep(1000); 
+          driver.manage().window().maximize(); 
+          driver.get("http://localhost:8082/contact.html");
+          System.out.println("MEDICURE Site opened");
+          
+          WebElement username = driver.findElement(By.xpath("/html/body/section/div/div[2]/div[1]/div/div[1]/div[1]/div/input"));
+          username.sendKeys("testMedicure");
+          System.out.println("username entered");
+          
+          WebElement phoneNumber = driver.findElement(By.xpath("/html/body/section/div/div[2]/div[1]/div/div[1]/div[2]/div/input"));
+          phoneNumber.sendKeys("1232342345");
+          System.out.println("password entered");
+          
+          WebElement email = driver.findElement(By.xpath("/html/body/section/div/div[2]/div[1]/div/div[2]/input"));
+          email.sendKeys("testmed@med.com");
+          System.out.println("email entered");
+          
+          WebElement messageStr = driver.findElement(By.className("message-box"));
+          messageStr.sendKeys("testing medicure app");
+          System.out.println("message entered");
+          
+          //driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+          WebElement sendButton = driver.findElement(By.xpath("/html/body/section/div/div[2]/div[1]/div/div[4]/button"));
+          sendButton.click();
+          System.out.println("Log in button clicked");
+          
+          assertEquals("Email sent.", driver.findElement(By.id("message")).getText());
+
+          driver.quit();
+          System.out.println("script executed successfully");
     }
 }
