@@ -27,7 +27,7 @@ public class App
           System.out.println("Script is Executing");
     	  
           driver.manage().window().maximize(); 
-          driver.get("http://34.204.15.194:8081/contact.html");
+          driver.get("http://54.147.57.60:8081/contact.html");
           System.out.println("MEDICURE Site opened");
           
           WebElement username = driver.findElement(By.xpath("/html/body/section/div/div[2]/div[1]/div/div[1]/div[1]/div/input"));
